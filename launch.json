@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🌐 Smart Campus: Web Dashboard",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run.py",
+            "args": ["--web"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "💻 Smart Campus: Interactive CLI Menu",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run.py",
+            "args": ["--cli"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "🧪 Run All Unit Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run.py",
+            "args": ["--test"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "⚡ Run Algorithmic Benchmarks",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run.py",
+            "args": ["--benchmark"],
+            "console": "integratedTerminal"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+venue_id,venue_name,building,capacity,category,duration_hours,attendees,utilization_pct,satisfaction_score,efficiency_grade
+ske_auditorium,St. Kuriakose Elias Auditorium,PG Block / Science Block II,544,Auditorium,3.5,500,91.9,9.6,High Efficiency
+ske_auditorium,St. Kuriakose Elias Auditorium,PG Block / Science Block II,544,Auditorium,2.0,420,77.2,9.0,Standard
+jubilee_auditorium,Jubilee Auditorium,Administrative Block,1000,Auditorium,3.0,850,85.0,9.7,High Efficiency
+jubilee_auditorium,Jubilee Auditorium,Administrative Block,1000,Auditorium,2.5,750,75.0,8.8,Standard
+m1_auditorium,M1 Auditorium,Main Block,300,Auditorium,2.5,280,93.3,9.5,High Efficiency
+m1_auditorium,M1 Auditorium,Main Block,300,Auditorium,1.5,210,70.0,8.6,Standard
+m2_auditorium,M2 Auditorium,Main Block,250,Auditorium,2.0,240,96.0,9.7,High Efficiency
+m2_auditorium,M2 Auditorium,Main Block,250,Auditorium,1.5,175,70.0,8.4,Standard
+m3_auditorium,M3 Auditorium,Main Block,250,Auditorium,3.0,220,88.0,9.2,High Efficiency
+m3_auditorium,M3 Auditorium,Main Block,250,Auditorium,2.0,160,64.0,8.2,Standard
+m4_auditorium,M4 Auditorium,Main Block,200,Auditorium,2.5,180,90.0,9.3,High Efficiency
+m4_auditorium,M4 Auditorium,Main Block,200,Auditorium,1.5,120,60.0,7.9,Moderate
+cs_lab_turing,Turing Central Computing & Research Lab,Science Block I,80,Computer Lab,3.0,75,93.8,9.5,High Efficiency
+cs_lab_turing,Turing Central Computing & Research Lab,Science Block I,80,Computer Lab,2.5,70,87.5,9.2,High Efficiency
+cs_lab_ai,Ada Lovelace AI & Cloud Innovation Lab,PG Block / Science Block II,75,Computer Lab,4.0,72,96.0,9.6,High Efficiency
+cs_lab_ai,Ada Lovelace AI & Cloud Innovation Lab,PG Block / Science Block II,75,Computer Lab,2.0,55,73.3,8.5,Standard
+board_room_admin,University Syndicate Board Room,Administrative Block,45,Conference Room,2.0,35,77.8,9.8,High Efficiency
+board_room_admin,University Syndicate Board Room,Administrative Block,45,Conference Room,1.5,28,62.2,9.3,High Efficiency
+sports_arena,KJU Sports Arena & Pavilion,Sports Complex Grounds,500,Sports Facility,8.5,450,90.0,9.1,High Efficiency
+sports_arena,KJU Sports Arena & Pavilion,Sports Complex Grounds,500,Sports Facility,3.5,280,56.0,8.0,Moderate
+h1_auditorium,H1 Auditorium,Humanities Block,250,Auditorium,2.5,230,92.0,9.4,High Efficiency
+h1_auditorium,H1 Auditorium,Humanities Block,250,Auditorium,1.5,180,72.0,8.7,Standard
+h2_auditorium,H2 Auditorium,Humanities Block,200,Auditorium,2.0,175,87.5,9.1,High Efficiency
+h2_auditorium,H2 Auditorium,Humanities Block,200,Auditorium,1.5,140,70.0,8.3,Standard

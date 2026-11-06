@@ -1,0 +1,157 @@
+{
+  "campus_name": "Kristu Jayanti (Deemed to be University)",
+  "location": "Kothanur, Bengaluru, Karnataka, India",
+  "landmarks": [
+    {
+      "id": "main_gate",
+      "name": "Gate 1",
+      "short_name": "Gate 1",
+      "x": 90,
+      "y": 240,
+      "category": "Entrance",
+      "description": "Main Pedestrian Gate 1 Entrance"
+    },
+    {
+      "id": "gate_2",
+      "name": "Gate 2",
+      "short_name": "Gate 2",
+      "x": 90,
+      "y": 480,
+      "category": "Entrance",
+      "description": "Vehicular Gate 2 Entrance"
+    },
+    {
+      "id": "main_block",
+      "name": "Main Block",
+      "short_name": "Main Block",
+      "x": 350,
+      "y": 240,
+      "category": "Academic Block",
+      "description": "Main Block (M1, M2, M3, M4 Auditoriums)"
+    },
+    {
+      "id": "cs_block",
+      "name": "PG Block",
+      "short_name": "PG Block",
+      "x": 600,
+      "y": 240,
+      "category": "Academic Block",
+      "description": "PG Block / Science Block II (St. Kuriakose Elias Auditorium)"
+    },
+    {
+      "id": "admin_block",
+      "name": "Admin Block",
+      "short_name": "Admin Block",
+      "x": 600,
+      "y": 440,
+      "category": "Administrative Block",
+      "description": "Administrative Block (Jubilee Auditorium)"
+    },
+    {
+      "id": "humanities_block",
+      "name": "Humanities Block",
+      "short_name": "Humanities Block",
+      "x": 600,
+      "y": 80,
+      "category": "Academic Block",
+      "description": "Humanities Block (H1, H2 Auditoriums)"
+    },
+    {
+      "id": "admin_parking",
+      "name": "Admin Block Basement Parking",
+      "short_name": "Admin Parking (1st)",
+      "x": 820,
+      "y": 440,
+      "category": "Parking",
+      "description": "1st Basement Parking Area (Admin Block)"
+    },
+    {
+      "id": "humanities_parking",
+      "name": "Humanities Block Basement Parking",
+      "short_name": "Humanities Parking (2nd)",
+      "x": 820,
+      "y": 140,
+      "category": "Parking",
+      "description": "2nd Basement Parking Area (Humanities Block)"
+    }
+  ],
+  "pathways": [
+    {
+      "source": "main_gate",
+      "dest": "main_block",
+      "weight": 60.0,
+      "is_accessible": true,
+      "path_name": "Straight Pathway from Gate 1 to Main Block"
+    },
+    {
+      "source": "main_block",
+      "dest": "cs_block",
+      "weight": 60.0,
+      "is_accessible": true,
+      "path_name": "Straight Pathway ahead to PG Block"
+    },
+    {
+      "source": "cs_block",
+      "dest": "admin_block",
+      "weight": 50.0,
+      "is_accessible": true,
+      "path_name": "Walk straight and take right from PG Block to Admin Block"
+    },
+    {
+      "source": "cs_block",
+      "dest": "humanities_block",
+      "weight": 50.0,
+      "is_accessible": true,
+      "path_name": "Walk straight and take left from PG Block to Humanities Block"
+    },
+    {
+      "source": "main_gate",
+      "dest": "gate_2",
+      "weight": 35.0,
+      "is_accessible": true,
+      "path_name": "Entrance Perimeter Walkway between Gate 1 & Gate 2"
+    },
+    {
+      "source": "gate_2",
+      "dest": "main_block",
+      "weight": 70.0,
+      "is_accessible": true,
+      "path_name": "Walkway from Gate 2 to Main Block"
+    },
+    {
+      "source": "gate_2",
+      "dest": "admin_block",
+      "weight": 75.0,
+      "is_accessible": true,
+      "path_name": "Straight road from Gate 2 along side of Admin Block"
+    },
+    {
+      "source": "gate_2",
+      "dest": "admin_parking",
+      "weight": 85.0,
+      "is_accessible": true,
+      "path_name": "Straight road from Gate 2 taking left behind Admin Block to 1st Basement Parking"
+    },
+    {
+      "source": "admin_parking",
+      "dest": "humanities_parking",
+      "weight": 60.0,
+      "is_accessible": true,
+      "path_name": "Access road behind Admin Block to 2nd Basement Parking (Humanities)"
+    },
+    {
+      "source": "admin_block",
+      "dest": "admin_parking",
+      "weight": 20.0,
+      "is_accessible": true,
+      "path_name": "Admin Block Basement Entry & Elevator Link"
+    },
+    {
+      "source": "humanities_block",
+      "dest": "humanities_parking",
+      "weight": 20.0,
+      "is_accessible": true,
+      "path_name": "Humanities Block Basement Entry & Elevator Link"
+    }
+  ]
+}

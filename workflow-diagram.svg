@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Smart Campus Venue and Facility Management Workflow</title>
+  <desc id="desc">Workflow from launching the application and loading sample data through the web or command-line interfaces to venue, booking, request, navigation, algorithm, and analytics services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="1" stop-color="#edf5f6"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#173b5e"/>
+      <stop offset="1" stop-color="#215a78"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="145%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#16344b" flood-opacity=".11"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1 L10 6 L1 11 Z" fill="#5f8192"/>
+    </marker>
+    <style>
+      .title { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #173b5e; }
+      .subtitle { font: 400 18px 'Segoe UI', Arial, sans-serif; fill: #557080; }
+      .label { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #183b53; }
+      .body { font: 400 17px 'Segoe UI', Arial, sans-serif; fill: #456172; }
+      .small { font: 600 15px 'Segoe UI', Arial, sans-serif; fill: #567383; }
+      .whiteLabel { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #fff; }
+      .whiteBody { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #eaf4f7; }
+      .section { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #577789; letter-spacing: 1.4px; }
+      .arrow { fill: none; stroke: #6b8998; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1180" rx="28" fill="url(#bg)"/>
+  <circle cx="1470" cy="80" r="140" fill="#dceef0" opacity=".55"/>
+  <circle cx="130" cy="1090" r="170" fill="#e1edf5" opacity=".52"/>
+
+  <text x="800" y="62" text-anchor="middle" class="title">Smart Campus Venue &amp; Facility Management</text>
+  <text x="800" y="94" text-anchor="middle" class="subtitle">Project workflow • from sample campus data to operational results</text>
+
+  <!-- Launch and inputs -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="122" width="360" height="66" rx="18" fill="url(#navy)"/>
+  </g>
+  <text x="800" y="164" text-anchor="middle" class="whiteLabel">Start Application</text>
+
+  <path d="M800 188 V218" class="arrow"/>
+  <text x="800" y="242" text-anchor="middle" class="section">LOAD PROJECT DATA</text>
+
+  <g filter="url(#shadow)">
+    <rect x="260" y="258" width="470" height="100" rx="18" fill="#ffffff" stroke="#d4e3e8" stroke-width="2"/>
+    <rect x="870" y="258" width="470" height="100" rx="18" fill="#ffffff" stroke="#d4e3e8" stroke-width="2"/>
+  </g>
+  <circle cx="302" cy="308" r="21" fill="#e4f3f1"/>
+  <text x="302" y="315" text-anchor="middle" font-family="Segoe UI,Arial" font-size="19" font-weight="700" fill="#198276">J</text>
+  <text x="340" y="299" class="label">Sample Campus Records</text>
+  <text x="340" y="330" class="body">Venues and bookings • JSON files</text>
+
+  <circle cx="912" cy="308" r="21" fill="#fff1d8"/>
+  <text x="912" y="315" text-anchor="middle" font-family="Segoe UI,Arial" font-size="17" font-weight="700" fill="#bb7a1b">J</text>
+  <text x="950" y="299" class="label">Campus Map Data</text>
+  <text x="950" y="330" class="body">Landmarks and pathways • JSON file</text>
+
+  <path d="M495 358 V385 H800" class="arrow"/>
+  <path d="M1105 358 V385 H800" class="arrow"/>
+
+  <!-- Interfaces -->
+  <g filter="url(#shadow)">
+    <rect x="365" y="402" width="390" height="82" rx="18" fill="#e6f2f8" stroke="#bdd8e5" stroke-width="2"/>
+    <rect x="845" y="402" width="390" height="82" rx="18" fill="#e8f4ef" stroke="#c4e1d5" stroke-width="2"/>
+  </g>
+  <text x="560" y="436" text-anchor="middle" class="label">Web Dashboard</text>
+  <text x="560" y="463" text-anchor="middle" class="body">Flask API + browser interface</text>
+  <text x="1040" y="436" text-anchor="middle" class="label">Command-Line Menu</text>
+  <text x="1040" y="463" text-anchor="middle" class="body">Interactive terminal workflow</text>
+
+  <path d="M800 385 V392 H560 V402" class="arrow"/>
+  <path d="M800 392 H1040 V402" class="arrow"/>
+  <path d="M560 484 V512 H800" class="arrow"/>
+  <path d="M1040 484 V512 H800" class="arrow"/>
+
+  <text x="800" y="540" text-anchor="middle" class="section">CAMPUS SERVICES</text>
+
+  <!-- Four service cards -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="558" width="345" height="186" rx="20" fill="#fff" stroke="#d7e6eb" stroke-width="2"/>
+    <rect x="445" y="558" width="345" height="186" rx="20" fill="#fff" stroke="#d7e6eb" stroke-width="2"/>
+    <rect x="820" y="558" width="345" height="186" rx="20" fill="#fff" stroke="#d7e6eb" stroke-width="2"/>
+    <rect x="1195" y="558" width="335" height="186" rx="20" fill="#fff" stroke="#d7e6eb" stroke-width="2"/>
+  </g>
+
+  <rect x="70" y="558" width="345" height="10" rx="5" fill="#268b83"/>
+  <rect x="445" y="558" width="345" height="10" rx="5" fill="#d59736"/>
+  <rect x="820" y="558" width="345" height="10" rx="5" fill="#7d69b1"/>
+  <rect x="1195" y="558" width="335" height="10" rx="5" fill="#3185a6"/>
+
+  <text x="242" y="602" text-anchor="middle" class="label">Venue Management</text>
+  <text x="242" y="632" text-anchor="middle" class="body">Maintain and find venue records</text>
+  <rect x="120" y="666" width="245" height="44" rx="22" fill="#e6f4f1"/>
+  <text x="242" y="694" text-anchor="middle" class="small">Linked List  •  BST  •  Stack</text>
+
+  <text x="617" y="602" text-anchor="middle" class="label">Booking &amp; Conflict Check</text>
+  <text x="617" y="632" text-anchor="middle" class="body">Review requests and check time clashes</text>
+  <rect x="495" y="666" width="245" height="44" rx="22" fill="#fff3df"/>
+  <text x="617" y="694" text-anchor="middle" class="small">Augmented AVL Interval Tree</text>
+
+  <text x="992" y="602" text-anchor="middle" class="label">Requests &amp; Priorities</text>
+  <text x="992" y="632" text-anchor="middle" class="body">Serve waitlists and dispatch key events</text>
+  <rect x="870" y="666" width="245" height="44" rx="22" fill="#f0ebf8"/>
+  <text x="992" y="694" text-anchor="middle" class="small">FIFO Queue  •  Max-Heap</text>
+
+  <text x="1362" y="602" text-anchor="middle" class="label">Campus Navigation</text>
+  <text x="1362" y="632" text-anchor="middle" class="body">Find routes between landmarks</text>
+  <rect x="1240" y="666" width="245" height="44" rx="22" fill="#e5f2f7"/>
+  <text x="1362" y="694" text-anchor="middle" class="small">Graph  •  Min-Heap  •  Dijkstra</text>
+
+  <path d="M242 744 V770 H800" class="arrow"/>
+  <path d="M617 744 V770" class="arrow"/>
+  <path d="M992 744 V770" class="arrow"/>
+  <path d="M1362 744 V770 H800" class="arrow"/>
+
+  <!-- Algorithm demonstrations -->
+  <g filter="url(#shadow)">
+    <rect x="190" y="790" width="1220" height="132" rx="20" fill="#edf4fa" stroke="#cbdde9" stroke-width="2"/>
+  </g>
+  <text x="800" y="824" text-anchor="middle" class="section">ALGORITHM DEMONSTRATIONS</text>
+  <rect x="240" y="844" width="250" height="48" rx="14" fill="#fff"/>
+  <rect x="520" y="844" width="250" height="48" rx="14" fill="#fff"/>
+  <rect x="800" y="844" width="250" height="48" rx="14" fill="#fff"/>
+  <rect x="1080" y="844" width="280" height="48" rx="14" fill="#fff"/>
+  <text x="365" y="875" text-anchor="middle" class="small">Search &amp; Sorting</text>
+  <text x="645" y="875" text-anchor="middle" class="small">Greedy Scheduling</text>
+  <text x="925" y="875" text-anchor="middle" class="small">Knapsack • Dynamic Programming</text>
+  <text x="1220" y="875" text-anchor="middle" class="small">Timetable • Backtracking</text>
+
+  <path d="M800 922 V950" class="arrow"/>
+
+  <!-- Results -->
+  <g filter="url(#shadow)">
+    <rect x="190" y="968" width="1220" height="100" rx="20" fill="url(#navy)"/>
+  </g>
+  <text x="800" y="1002" text-anchor="middle" class="whiteLabel">System Results</text>
+  <text x="800" y="1036" text-anchor="middle" class="whiteBody">Organized venues  •  Booking decisions  •  Priority dispatch  •  Campus routes</text>
+
+  <!-- Separate analytics branch -->
+  <path d="M1340 308 H1460 V1087 H1150 V1068" fill="none" stroke="#c38a32" stroke-width="3" stroke-dasharray="9 8" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="370" y="1092" width="860" height="62" rx="18" fill="#fff7e9" stroke="#ebd09c" stroke-width="2"/>
+  </g>
+  <text x="800" y="1118" text-anchor="middle" class="label" font-size="18">Separate R Analytics: Venue CSV → Utilization &amp; Efficiency Models</text>
+  <text x="800" y="1141" text-anchor="middle" class="small">Statistical analysis runs as a supplementary workflow</text>
+</svg>

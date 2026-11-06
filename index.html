@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristu Jayanti University | Smart Campus Venue & Facility Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-icon">🏛️</div>
+                <div class="brand-text">
+                    <h1>Kristu Jayanti University</h1>
+                    <p>Smart Campus Venue & Facility Management — Internal Academic Operations</p>
+                </div>
+            </div>
+
+            <nav class="nav-tabs" style="flex-wrap: wrap;">
+                <button class="tab-btn active" data-tab="tabDashboard">
+                    <span>📊</span> Dashboard
+                </button>
+                <button class="tab-btn" data-tab="tabVenues">
+                    <span>🏢</span> Venues
+                </button>
+                <button class="tab-btn" data-tab="tabBookings">
+                    <span>📅</span> Bookings & Schedule
+                </button>
+                <button class="tab-btn" data-tab="tabWaitlist">
+                    <span>🎫</span> Waitlist
+                </button>
+                <button class="tab-btn admin-only" data-tab="tabPriority">
+                    <span>👑</span> Priority Allocations
+                </button>
+                <button class="tab-btn" data-tab="tabNavigation">
+                    <span>🗺️</span> Campus Route Map
+                </button>
+            </nav>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div class="portal-toggle-container">
+                    <button class="portal-btn active" id="btnUserPortal" onclick="switchPortal('user')">
+                        👤 User Portal
+                    </button>
+                    <button class="portal-btn" id="btnAdminPortal" onclick="switchPortal('admin')">
+                        🛡️ Admin Portal <span id="adminPendingBadge" class="badge badge-rose" style="display:none; margin-left: 4px; padding: 0.1rem 0.4rem; font-size: 0.68rem;">0</span>
+                    </button>
+                </div>
+
+                <div class="header-status">
+                    <span class="status-indicator"></span>
+                    <span id="portalRoleIndicator" style="font-size: 0.78rem; color: var(--text-secondary); font-weight: 500;">User Portal</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ================================================================= -->
+        <!-- 1. DASHBOARD OVERVIEW PANEL                                       -->
+        <!-- ================================================================= -->
+        <section id="tabDashboard" class="tab-panel active">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                        <span class="badge badge-cyan">Kothanur Main Campus</span>
+                        <span class="badge badge-emerald">Internal College Use Only</span>
+                    </div>
+                    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem; color: #fff;">
+                        Campus Venue Operations Center
+                    </h2>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 760px; line-height: 1.5;">
+                        Official internal campus facility management portal. Allocates and schedules auditoriums, seminar halls, and computer laboratories strictly for college academic assemblies, department symposiums, student fests, and examinations with automated conflict prevention.
+                    </p>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="switchNavTab('tabBookings')">
+                        📅 Schedule Venue Slot
+                    </button>
+                    <button class="btn btn-secondary" onclick="switchNavTab('tabVenues')">
+                        🏢 View Venue Directory
+                    </button>
+                </div>
+            </div>
+
+            <!-- User-Only Campus Route Map Feature Banner -->
+            <div class="user-only" style="margin-bottom: 1.5rem;">
+                <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.14)); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.35rem;">
+                            <span style="font-size: 1.3rem;">🗺️</span>
+                            <strong style="color: #fff; font-size: 1.05rem;">Campus Route Map & Venue Wayfinding</strong>
+                            <span class="badge badge-emerald">User Wayfinding</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 720px; line-height: 1.5;">
+                            Find your way around Kristu Jayanti campus: straight from Gate 1 to Main Block and PG Block; right to Admin Block (Jubilee Auditorium); straight left to Humanities Block (H1, H2); and Gate 2 to college basement parking areas.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem;">
+                        <button class="btn btn-primary" onclick="switchNavTab('tabNavigation')">
+                            🗺️ Open Campus Route Map
+                        </button>
+                        <button class="btn btn-secondary" onclick="switchNavTab('tabBookings')">
+                            📅 Request Venue Slot
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Metric KPI Cards -->
+            <div class="grid-4" style="margin-bottom: 1.5rem;">
+                <div class="metric-card">
+                    <div class="metric-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-blue);">🏛️</div>
+                    <div class="metric-content">
+                        <h3 id="dashVenueCount">10</h3>
+                        <p>Campus Venues</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon" style="background: rgba(129, 140, 248, 0.15); color: var(--accent-indigo);">📅</div>
+                    <div class="metric-content">
+                        <h3 id="dashBookingCount">9</h3>
+                        <p>Active Event Bookings</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon" style="background: rgba(52, 211, 153, 0.15); color: var(--accent-emerald);">🎫</div>
+                    <div class="metric-content">
+                        <h3 id="dashWaitlistCount">3</h3>
+                        <p>Waitlist Queue Requests</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon" style="background: rgba(244, 63, 94, 0.15); color: var(--accent-rose);">👑</div>
+                    <div class="metric-content">
+                        <h3 id="dashPriorityCount">3</h3>
+                        <p>Institutional Priority Requests</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Service Hub & Live Activities -->
+            <div class="grid-2">
+                <!-- Quick Operations Hub -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                        <span class="badge badge-emerald">Fast Access</span>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <div class="action-tile" onclick="switchNavTab('tabBookings')">
+                            <div class="action-tile-icon">📅</div>
+                            <div>
+                                <h4>Slot Scheduling</h4>
+                                <p>Interactive daily schedule timeline with automatic conflict detection</p>
+                            </div>
+                        </div>
+
+                        <div class="action-tile" onclick="switchNavTab('tabVenues')">
+                            <div class="action-tile-icon">🏢</div>
+                            <div>
+                                <h4>Venue Directory</h4>
+                                <p>Browse, filter, and register campus auditoriums & laboratories</p>
+                            </div>
+                        </div>
+
+                        <div class="action-tile" onclick="switchNavTab('tabWaitlist')">
+                            <div class="action-tile-icon">🎫</div>
+                            <div>
+                                <h4>Waitlist Counter</h4>
+                                <p>Queue token issuance & coordinator approvals for full slots</p>
+                            </div>
+                        </div>
+
+                        <div class="action-tile" onclick="switchNavTab('tabPriority')">
+                            <div class="action-tile-icon">👑</div>
+                            <div>
+                                <h4>Priority Allocation</h4>
+                                <p>Expedited review & hall allocation for official university assemblies</p>
+                            </div>
+                        </div>
+
+                        <div class="action-tile" onclick="switchNavTab('tabNavigation')">
+                            <div class="action-tile-icon">🗺️</div>
+                            <div>
+                                <h4>Campus Route Map</h4>
+                                <p>Interactive walking routes to auditoriums, blocks & facilities</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Live Campus Notice & Status -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Campus Auditoriums & Facilities</h2>
+                        <span class="badge badge-cyan">Facility Directory</span>
+                    </div>
+                    <div class="notice-list">
+                        <div class="notice-item">
+                            <div class="notice-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-blue);">🏛️</div>
+                            <div>
+                                <strong>Jubilee Auditorium (Administrative Block)</strong>
+                                <p>800–1,000 seat premier auditorium in the Administrative Block equipped with digital line array and stage lighting for university convocations, conclaves, and official ceremonies.</p>
+                                <span class="notice-time">Administrative Block Ground Floor</span>
+                            </div>
+                        </div>
+
+                        <div class="notice-item">
+                            <div class="notice-icon" style="background: rgba(52, 211, 153, 0.15); color: var(--accent-emerald);">🎭</div>
+                            <div>
+                                <strong>St. Kuriakose Elias Auditorium (PG Block / Science Block II)</strong>
+                                <p>Flagship 544-seat prestigious auditorium in PG Block / Science Block II for national symposiums (ShellHacks MCA), academic conferences, and cultural assemblies.</p>
+                                <span class="notice-time">PG Block / Science Block II</span>
+                            </div>
+                        </div>
+
+                        <div class="notice-item">
+                            <div class="notice-icon" style="background: rgba(129, 140, 248, 0.15); color: var(--accent-indigo);">🏢</div>
+                            <div>
+                                <strong>Main Block Auditoriums: M1, M2, M3, M4</strong>
+                                <p>Four dedicated auditoriums situated inside the Main Block serving department assemblies, guest lectures, placement drives, and student chapter workshops.</p>
+                                <span class="notice-time">Main Block Floors 1–4</span>
+                            </div>
+                        </div>
+
+                        <div class="notice-item">
+                            <div class="notice-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber);">📚</div>
+                            <div>
+                                <strong>Humanities Block Auditoriums: H1, H2</strong>
+                                <p>Two dedicated auditoriums in the Humanities Block accommodating literary fests, debate championships, social science symposiums, and cultural presentations.</p>
+                                <span class="notice-time">Humanities Block Floors 1–2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================================================================= -->
+        <!-- 2. VENUE DIRECTORY PANEL                                          -->
+        <!-- ================================================================= -->
+        <section id="tabVenues" class="tab-panel">
+            <div class="grid-aside-main">
+                <!-- Aside: Register Venue Form -->
+                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <!-- Admin Register Venue Card -->
+                    <div class="card admin-only">
+                        <div class="card-header">
+                            <h2>Register Campus Venue</h2>
+                            <span class="badge badge-rose">Admin Only</span>
+                        </div>
+
+                        <form id="venueForm">
+                            <div class="form-group">
+                                <label for="vidInput">Venue Code / ID</label>
+                                <input type="text" id="vidInput" placeholder="e.g. m5_auditorium" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="vnameInput">Venue Name</label>
+                                <input type="text" id="vnameInput" placeholder="e.g. M5 Auditorium" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="vbuildingInput">Campus Building</label>
+                                <select id="vbuildingInput">
+                                    <option value="Main Block" selected>Main Block</option>
+                                    <option value="Administrative Block">Administrative Block</option>
+                                    <option value="PG Block / Science Block II">PG Block / Science Block II</option>
+                                    <option value="Humanities Block">Humanities Block</option>
+                                    <option value="Science Block I">Science Block I</option>
+                                    <option value="Sports Complex Grounds">Sports Complex Grounds</option>
+                                </select>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                                <div class="form-group">
+                                    <label for="vcategoryInput">Category</label>
+                                    <select id="vcategoryInput">
+                                        <option value="Auditorium" selected>Auditorium</option>
+                                        <option value="Seminar Hall">Seminar Hall</option>
+                                        <option value="Computer Lab">Computer Lab</option>
+                                        <option value="Conference Room">Conference Room</option>
+                                        <option value="Sports Facility">Sports Facility</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vcapacityInput">Capacity (Seats)</label>
+                                    <input type="number" id="vcapacityInput" min="10" max="2500" value="250" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="vpolicyInput">Usage Policy</label>
+                                <input type="text" id="vpolicyInput" value="College Academic & Departmental Use Only" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                ➕ Register Campus Venue
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- User Guide Aside Card -->
+                    <div class="card user-only">
+                        <div class="card-header">
+                            <h2>Venue Directory</h2>
+                            <span class="badge badge-cyan">User Guide</span>
+                        </div>
+                        <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+                            Review seating capacities, AV sound systems, and usage guidelines for college auditoriums and computing labs. Select any venue to view scheduled events or submit a booking request.
+                        </p>
+                        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                            <button class="btn btn-primary" onclick="switchNavTab('tabBookings')">
+                                📅 Request Venue Booking
+                            </button>
+                            <button class="btn btn-secondary" onclick="switchNavTab('tabNavigation')">
+                                🗺️ Find Walking Route to Venue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main: Venue Directory Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2>Campus Venues</h2>
+                            <p style="font-size: 0.82rem; color: var(--text-secondary);">
+                                Directory of official auditoriums, conference halls, and computing labs across Kristu Jayanti campus
+                            </p>
+                        </div>
+                        <div class="admin-only" style="display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;" onclick="reverseVenueList()">
+                                🔄 Reverse Order
+                            </button>
+                            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;" onclick="undoVenueAction()">
+                                ↩️ Undo Last Deletion
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter & Search Toolbar -->
+                    <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <input type="text" id="venueSearchInput" placeholder="🔍 Search venue by name, code or building..." style="flex: 1; min-width: 200px;" oninput="filterVenueTable()">
+                        <select id="venueCategoryFilter" style="width: 200px;" onchange="filterVenueTable()">
+                            <option value="ALL">All Categories</option>
+                            <option value="Auditorium">Auditoriums (Jubilee, SKE, M1-M4, H1-H2)</option>
+                            <option value="Computer Lab">Computer Labs</option>
+                            <option value="Conference Room">Conference Rooms</option>
+                            <option value="Sports Facility">Sports Facilities</option>
+                        </select>
+                    </div>
+
+                    <!-- Venues Table -->
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Venue Code</th>
+                                    <th>Venue Name</th>
+                                    <th>Campus Building</th>
+                                    <th>Category</th>
+                                    <th>Capacity</th>
+                                    <th>Sound System & AV</th>
+                                    <th>Policy</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="venueTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================================================================= -->
+        <!-- 3. SLOT BOOKING & SCHEDULE TIMELINE PANEL                         -->
+        <!-- ================================================================= -->
+        <section id="tabBookings" class="tab-panel">
+            <!-- Admin Approval Center: Pending Booking Requests -->
+            <div class="card admin-only" style="margin-bottom: 1.5rem; border-left: 4px solid var(--accent-rose);">
+                <div class="card-header">
+                    <div>
+                        <h2>🛡️ Admin Approval Center — Pending Booking Requests</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary);">
+                            Review, approve into the AVL Interval Tree, or reject booking requests submitted by faculty and student bodies
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="badge badge-rose" id="adminPendingCountBadge">0 Pending</span>
+                        <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="loadPendingBookings()">
+                            🔄 Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div id="adminPendingContainer" style="margin-top: 1rem;">
+                    <!-- Dynamically populated pending cards -->
+                </div>
+            </div>
+
+            <!-- User Status: My Booking Requests -->
+            <div class="card user-only" style="margin-bottom: 1.5rem; border-left: 4px solid var(--accent-blue);">
+                <div class="card-header">
+                    <div>
+                        <h2>📋 My Submitted Booking Requests</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary);">
+                            Track the status of your venue booking requests (Awaiting Admin Approval, Approved, or Rejected)
+                        </p>
+                    </div>
+                    <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="loadUserRequests()">
+                        🔄 Refresh Status
+                    </button>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.75rem;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Event Title</th>
+                                <th>Department / Body</th>
+                                <th>Target Venue</th>
+                                <th>Date & Time Interval</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userRequestsTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid-aside-main">
+                <!-- Aside: Slot Booking Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 id="bookingFormHeading">Request Venue Booking</h2>
+                        <span class="badge badge-emerald" id="bookingFormBadge">User Portal</span>
+                    </div>
+                    <p id="bookingFormDescription" style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                        Select auditorium or lab, event interval, and submit. Your request is queued for Admin approval.
+                    </p>
+
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="bookVenueSelect">Select Campus Venue</label>
+                            <select id="bookVenueSelect" required onchange="onBookingVenueChanged()">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookTitle">Event / Assembly Title</label>
+                            <input type="text" id="bookTitle" placeholder="e.g. National Symposium Inauguration" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookOrganizer">Department / Student Association</label>
+                            <input type="text" id="bookOrganizer" placeholder="e.g. Dept. of Computer Applications (MCA)" required>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                            <div class="form-group">
+                                <label for="bookStartTime">Start Time</label>
+                                <input type="time" id="bookStartTime" value="14:00" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookEndTime">End Time</label>
+                                <input type="time" id="bookEndTime" value="16:00" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookDate">Reservation Date</label>
+                            <input type="date" id="bookDate" value="2026-09-10" required>
+                        </div>
+
+                        <button type="submit" id="bookSubmitBtn" class="btn btn-primary" style="width: 100%;">
+                            📩 Submit Booking Request
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Main: Visual Timeline & Existing Schedule -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 id="timelineVenueTitle">Venue Schedule Timeline</h2>
+                            <p style="font-size: 0.82rem; color: var(--text-secondary);">
+                                Real-time daily timeline (08:00 to 20:00) with automatic clash detection
+                            </p>
+                        </div>
+                        <span class="badge badge-cyan" id="timelineVenueBadge">ske_auditorium</span>
+                    </div>
+
+                    <!-- Visual Timeline Bar -->
+                    <div class="timeline-visual-card">
+                        <div class="timeline-axis">
+                            <span>08:00</span>
+                            <span>10:00</span>
+                            <span>12:00</span>
+                            <span>14:00</span>
+                            <span>16:00</span>
+                            <span>18:00</span>
+                            <span>20:00</span>
+                        </div>
+                        <div id="timelineTrack" class="timeline-track">
+                            <!-- Booking blocks positioned dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Clash Warning Alert Box -->
+                    <div id="clashAlertBox" style="display: none; margin-bottom: 1rem; padding: 1rem; background: rgba(244, 63, 94, 0.15); border: 1px solid var(--accent-rose); border-radius: 8px;">
+                        <h4 style="color: var(--accent-rose); font-size: 0.9rem; margin-bottom: 0.3rem;">⚠️ Scheduling Conflict Detected!</h4>
+                        <p id="clashAlertMsg" style="font-size: 0.82rem; color: #fecdd3;"></p>
+                    </div>
+
+                    <!-- Bookings Table for Selected Venue -->
+                    <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Scheduled Events for Selected Venue</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Event Title</th>
+                                    <th>Department / Body</th>
+                                    <th>Time Interval</th>
+                                    <th>Duration</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookingsTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================================================================= -->
+        <!-- 4. WAITLIST PANEL                                                 -->
+        <!-- ================================================================= -->
+        <section id="tabWaitlist" class="tab-panel">
+            <div class="grid-aside-main">
+                <!-- Aside: Enqueue Waitlist Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Join Venue Waitlist</h2>
+                        <span class="badge badge-cyan">Waitlist Request</span>
+                    </div>
+
+                    <form id="waitlistForm">
+                        <div class="form-group">
+                            <label for="waitlistVenue">Desired Campus Venue</label>
+                            <select id="waitlistVenue">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waitlistTitle">Event Purpose / Title</label>
+                            <input type="text" id="waitlistTitle" placeholder="e.g. Literary Debating Championship" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waitlistOrganizer">Department / Student Club</label>
+                            <input type="text" id="waitlistOrganizer" placeholder="e.g. Student Welfare Directorate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waitlistTimeSlot">Requested Time Window</label>
+                            <input type="text" id="waitlistTimeSlot" value="14:00 - 17:00" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            🎫 Submit Waitlist Request
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Main: Queue Status & Dequeue Station -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2>Active Waitlist Queue</h2>
+                            <p style="font-size: 0.82rem; color: var(--text-secondary);">
+                                Requests are reviewed and approved in order of submission
+                            </p>
+                        </div>
+                        <button class="btn btn-primary" onclick="serveNextWaitlist()">
+                            ✅ Approve Next Request
+                        </button>
+                    </div>
+
+                    <div id="waitlistQueueContainer" class="queue-card-grid" style="margin-top: 1rem;">
+                        <!-- Dynamically populated queue token cards -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================================================================= -->
+        <!-- 5. PRIORITY EVENT ALLOCATION PANEL                                -->
+        <!-- ================================================================= -->
+        <section id="tabPriority" class="tab-panel">
+            <div class="grid-aside-main">
+                <!-- Aside: Submit Priority Request -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Register Priority Event</h2>
+                        <span class="badge badge-purple">Institutional</span>
+                    </div>
+
+                    <form id="priorityForm">
+                        <div class="form-group">
+                            <label for="prioTitle">Institutional Event Title</label>
+                            <input type="text" id="prioTitle" placeholder="e.g. University Convocation Ceremony" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prioVenue">Target Venue</label>
+                            <select id="prioVenue">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prioOrganizer">Authority / Directorate</label>
+                            <input type="text" id="prioOrganizer" placeholder="e.g. Vice Chancellor's Secretariat" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prioScore">Priority Level (1.0 to 10.0)</label>
+                            <input type="number" id="prioScore" min="1.0" max="10.0" step="0.5" value="9.0" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            👑 Submit Priority Request
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Main: Priority Triage Board -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2>Institutional Priority Allocation</h2>
+                            <p style="font-size: 0.82rem; color: var(--text-secondary);">
+                                Ensures high-priority university assemblies, convocations, and conclaves receive expedited hall allocation
+                            </p>
+                        </div>
+                        <button class="btn btn-primary" onclick="dispatchTopPriority()">
+                            🚀 Allocate Highest Priority Event
+                        </button>
+                    </div>
+
+                    <div id="priorityCardsGrid" class="priority-cards-grid" style="margin-top: 1rem;">
+                        <!-- Dynamically populated priority cards -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================================================================= -->
+        <!-- 6. CAMPUS ROUTE MAP & VENUE NAVIGATION                            -->
+        <!-- ================================================================= -->
+        <section id="tabNavigation" class="tab-panel">
+            <div class="grid-aside-main">
+                <!-- Navigation Controls -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Venue Wayfinding</h2>
+                        <span class="badge badge-cyan">Walking Routes</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="navStartSelect">Origin / Entrance</label>
+                        <select id="navStartSelect">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="navDestSelect">Destination Venue</label>
+                        <select id="navDestSelect">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; text-transform: none;">
+                            <input type="checkbox" id="navWheelchair">
+                            <span>♿ Wheelchair Accessible & Ramp Path Only</span>
+                        </label>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%;" onclick="findVenueRoute()">
+                        🚶 Calculate Walking Route
+                    </button>
+
+                    <!-- Route Result Info -->
+                    <div id="navRouteResult" style="margin-top: 1rem; display: none; padding: 0.8rem; background: rgba(11, 15, 25, 0.6); border-radius: 8px;">
+                        <h4 style="font-size: 0.88rem; color: var(--accent-emerald);">Optimal Walking Route</h4>
+                        <p id="navDistanceText" style="font-size: 0.82rem; color: var(--text-secondary); margin: 0.2rem 0;"></p>
+                        <div id="navStepsContainer" style="font-size: 0.78rem; font-family: var(--font-mono); color: #e2e8f0; margin-top: 0.4rem;"></div>
+                    </div>
+                </div>
+
+                <!-- SVG Campus Map -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Interactive Campus Map</h2>
+                        <span class="badge badge-emerald">Campus Route Map</span>
+                    </div>
+                    <div style="width: 100%; height: 500px; background: #070a12; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; position: relative;">
+                        <svg id="campusSvgMap" width="100%" height="100%" viewBox="0 0 1000 650">
+                            <!-- Graph pathways & landmarks rendered dynamically -->
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

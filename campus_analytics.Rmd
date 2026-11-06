@@ -1,0 +1,147 @@
+---
+title: "Smart Campus & Student Operations: Data Analytics & Predictive Modeling"
+author: "MCA Data Structures & Analytics Project"
+date: "2026-09-07"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: cosmo
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## 1. Executive Summary
+
+This R Notebook satisfies the course deliverable requirement by performing data ingestion, exploratory data analysis, visualization, and machine learning model training on the **Smart Campus Student Operations** dataset.
+
+The analysis addresses:
+- **Academic Trends**: How class attendance directly influences cumulative student grade point average (CGPA).
+- **Tuition & Scholarship Distribution**: Analysis of institutional discounts and net payable fees across departments.
+- **Predictive Modeling**:
+  1. Multiple Linear Regression for CGPA estimation.
+  2. Binary Logistic Regression for High Merit scholarship eligibility prediction.
+
+---
+
+## 2. Data Loading & Preprocessing
+
+```{r load_data}
+# Locate dataset
+csv_path <- file.path("..", "data", "students_dataset.csv")
+if (!file.exists(csv_path)) {
+  csv_path <- file.path("data", "students_dataset.csv")
+}
+
+students <- read.csv(csv_path, header = TRUE, stringsAsFactors = FALSE)
+
+# Convert factor variables
+students$department <- as.factor(students$department)
+students$merit_category <- as.factor(students$merit_category)
+students$is_high_merit <- as.factor(ifelse(students$cgpa >= 8.5, 1, 0))
+
+# Dataset Structure
+str(students)
+```
+
+### Descriptive Statistics
+
+```{r summary_stats}
+summary(students[, c("cgpa", "attendance", "base_fee", "scholarship_percent", "net_fee")])
+```
+
+---
+
+## 3. Exploratory Data Analysis & Visualization
+
+### A. Distribution of Student CGPA
+
+```{r plot_cgpa, fig.width=8, fig.height=5}
+hist(students$cgpa,
+     breaks = 8,
+     col = "#38bdf8",
+     border = "#0284c7",
+     main = "Student CGPA Distribution",
+     xlab = "Cumulative GPA",
+     ylab = "Number of Students",
+     las = 1)
+abline(v = mean(students$cgpa), col = "red", lwd = 2, lty = 2)
+legend("topright", legend = c(paste("Mean CGPA =", round(mean(students$cgpa), 2))),
+       col = "red", lty = 2, lwd = 2)
+```
+
+### B. Correlation: Attendance vs. Academic Performance (CGPA)
+
+```{r plot_attendance, fig.width=8, fig.height=5}
+plot(students$attendance, students$cgpa,
+     pch = 19,
+     col = "#6366f1",
+     main = "Relationship Between Attendance and Academic Performance",
+     xlab = "Attendance (%)",
+     ylab = "CGPA",
+     las = 1)
+
+# Fit linear regression trendline
+trend_model <- lm(cgpa ~ attendance, data = students)
+abline(trend_model, col = "#ef4444", lwd = 2)
+grid(col = "lightgray", lty = "dotted")
+legend("topleft", legend = paste("Linear Fit: R^2 =", round(summary(trend_model)$r.squared, 3)),
+       col = "#ef4444", lty = 1, lwd = 2)
+```
+
+### C. Department-wise Performance
+
+```{r plot_dept, fig.width=8, fig.height=5}
+boxplot(cgpa ~ department, data = students,
+        col = c("#34d399", "#60a5fa", "#f472b6"),
+        main = "Academic Performance by Department",
+        xlab = "Academic Department",
+        ylab = "CGPA",
+        las = 1)
+```
+
+---
+
+## 4. Predictive Modeling
+
+### Model 1: Multiple Linear Regression (CGPA Estimation)
+
+```{r linear_regression}
+set.seed(42)
+train_idx <- sample(1:nrow(students), size = 0.8 * nrow(students))
+train <- students[train_idx, ]
+test <- students[-train_idx, ]
+
+# Fit Multiple Linear Regression Model
+lm_fit <- lm(cgpa ~ attendance + semester + base_fee, data = train)
+summary(lm_fit)
+
+# Evaluation on Test Data
+preds <- predict(lm_fit, newdata = test)
+rmse <- sqrt(mean((test$cgpa - preds)^2))
+cat(sprintf("Test Set RMSE: %.4f\n", rmse))
+```
+
+### Model 2: Logistic Regression (High Merit Scholarship Qualification)
+
+```{r logistic_regression}
+# Logistic regression to classify students as High Merit (CGPA >= 8.5)
+logit_fit <- glm(is_high_merit ~ attendance + semester, data = train, family = binomial)
+summary(logit_fit)
+
+# Confusion Matrix
+test_probs <- predict(logit_fit, newdata = test, type = "response")
+test_classes <- ifelse(test_probs > 0.5, 1, 0)
+table(Actual = test$is_high_merit, Predicted = test_classes)
+```
+
+---
+
+## 5. Conclusion
+
+- A strong positive linear correlation exists between class attendance and CGPA.
+- Multiple Linear Regression provides an accurate estimator for academic GPA with low RMSE.
+- Logistic Regression achieves robust classification for merit scholarship candidate identification.

@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "esbenp.prettier-vscode",
+        "ecmel.vscode-html-css",
+        "formulahendry.auto-rename-tag",
+        "ritwickdey.liveserver",
+        "REditorSupport.r",
+        "quarto.quarto",
+        "yzhang.markdown-all-in-one"
+    ]
+}
